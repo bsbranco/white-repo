@@ -1,0 +1,109 @@
+@import '../../../../assets/scss/colors';
+@import '../../../../assets/scss/variables';
+@import '../../../../assets/scss/mixins';
+
+// FOOTER
+.mastfoot {
+    clear: both;
+    position: relative;
+    overflow: hidden;
+    .container,
+    .u-container {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+.mastfoot--admin {
+    text-align: center;
+    // @include rem((padding: 23px 0 $gutter));
+    .mastfoot__paragraph {
+        color: $base-font-color;
+        line-height: 1.4;
+        @include rem((font-size: 12px));
+        a {
+            display: block;
+            color: $base-font-color;
+            @media screen and (min-width: $medium-mq) {
+                display: inline-block;
+            }
+            &:before {
+                @media screen and (min-width: $medium-mq) {
+                    content: '-';
+                    display: inline-block;
+                    @include rem((padding: 0 4px));
+                    color: $base-font-color;
+                    @include rem((font-size: 12px));
+                }
+            }
+            &:first-child:before {
+                display: none;
+            }
+            &:hover {
+                color: $base-font-color;
+            }
+        }
+    }
+}
+
+.mastfoot__paragraph {
+    display: block;
+    padding: 0;
+    margin: 0;
+    a {
+        display: inline-block;
+        position: relative;
+        padding: 0;
+        margin: 0;
+        i {
+            display: inline-block;
+            @include rem((padding: 0 $gutter/4));
+            @include rem((font-size: 24px));
+            @media screen and (min-width: $medium-mq) {
+                position: absolute;
+                top: 0;
+                right: 0;
+                @include rem((padding: 0));
+            }
+        }
+        .no-touchevents & {
+            @include transition(opacity, 200ms);
+            @include hardware-acceleration();
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+        span {
+            display: none;
+            @media screen and (min-width: $medium-mq) {
+                display: block;
+            }
+        }
+    }
+}
+
+.mastfoot__logo {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    @include rem((max-width: 80px));
+    @include rem((padding: $gutter 0 0 0));
+    img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        &.is-svg {
+            display: none;
+        }
+        .svg & {
+            &.is-svg {
+                display: block;
+            }
+            &.is-png {
+                display: none;
+            }
+        }
+    }
+}
