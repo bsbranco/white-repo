@@ -1,0 +1,170 @@
+@import 'variables';
+// Mixin for font smoothing
+// Usage: @include font-smoothing();
+@mixin font-smoothing($value: on) {
+    @if $value == on {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    } @else {
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+    }
+}
+
+// MIXINS
+// EM
+// usage: @include em(250px);
+@function em($pixels, $context: $browser-context) {
+    @return #{$pixels/$context}em;
+}
+
+
+// REM
+@function rem($value, $baseline: $browser-context) {
+    @if $value == 0 {
+        @return 0;
+    }
+    @if type-of($value) == list {
+        $result: ();
+        @each $e in $value {
+            $result: append($result, rem($e, $baseline));
+        }
+        @return $result;
+    } @else {
+        @return if(type-of($value) == number and unit($value) == px, $value / $baseline * 1rem, $value);
+    }
+}
+
+@mixin rem($properties) {
+    @each $property, $value in $properties {
+        @if (type-of($value) == number and $value != 0) {
+            $value: if(unitless($value), $value * 1px, $value);
+        }
+        #{$property}: $value;
+        #{$property}: rem($value);
+    }
+}
+
+// TRANSITIONS
+// Mixin for short hand transitions
+// Usage: @include transition(color, 200ms);
+@mixin transition($property: color, $speed: 200ms, $ease: ease-in-out) {
+    transition: $property $speed $ease;
+}
+
+// Mixin transition property
+// Usage: @include transition-property(color, background-color, height);
+@mixin transition-property($propery...) {
+    transition-property: $propery;
+}
+
+
+// Mixin transition duration
+// Usage: @include transition-duration(200ms);
+@mixin transition-duration($duration) {
+    transition-duration: $duration;
+}
+
+
+// Mixin transition timing
+// Usage: @include transition-timing(ease-in-out);
+@mixin transition-timing($timing) {
+    transition-timing-function: $timing;
+}
+
+
+// Mixin transition delay
+// Usage: @include transition-delay(200ms);
+@mixin transition-delay($delay) {
+    transition-delay: $delay;
+}
+
+
+// Mixin for hardware acceleration
+// usage: @incldue hardware-acceleration();
+@mixin hardware-acceleration() {
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+
+// Mixin lighten color
+// usage: @include tint(green, 25%);
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+
+// Mixin Darken color
+// usage: @include shade(green, 25%);
+@function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+}
+
+
+// Mixin for background images
+// usage: @include background-image();
+// usage: @include background-image(contain, center center, true);
+@mixin background-image($property: cover, $position: center center, $repeat: false) {
+    background-size: $property;
+    background-position: $position;
+
+    @if $repeat {
+        background-repeat: repeat;
+    } @else {
+        background-repeat: no-repeat;
+    }
+}
+
+@mixin clearfix-custom($type: both) {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: $type;
+    }
+}
+
+// Horizontal gradient, from left to right
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
+@mixin gradient-horizontal($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+    background-image: -webkit-linear-gradient(left, $start-color $start-percent, $end-color $end-percent);
+    background-image: -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent);
+    background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent);
+    background-repeat: repeat-x;
+}
+
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
+@mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+    background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);
+    background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);
+    background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
+    background-repeat: repeat-x;
+}
+
+// GreyScale for different browsers except IE10 - IE11
+@mixin grayscale_element($value) {
+    -webkit-filter: #{"grayscale(#{$value})"};
+    -moz-filter: #{"grayscale(#{$value})"};
+    filter:#{"grayscale(#{$value})"};
+}
+
+/// Mixin to prefix a property
+/// @param {String} $property - Property name
+/// @param {*} $value - Property value
+/// @param {List} $prefixes (()) - List of prefixes to print
+@mixin prefix($property, $value, $prefixes: ()) {
+    @each $prefix in $prefixes {
+        #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+}

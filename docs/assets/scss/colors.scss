@@ -1,0 +1,55 @@
+
+// Main Palette
+$azure-radiance:          #0099FF;
+$indigo:                  #4c4dff;
+$indigo-lighter:          #C8C8F6;
+$indigo-lighter-gray:     #E7E7F6;
+$clay:                    #888098;
+$lemon:                   #eded50;
+$lemon-lighter:           #E8E8A6;
+$grey:                    #474850;
+$dark-grey:               #62646f;
+$olive:                   #7e7730;
+$pink:                    #fd2491;
+
+// Others
+$white:                   #fff;
+$black:                   #000;
+$red:                     #D9534F;
+$chromium:                #D8D8E6;
+$silver-light:            #e7e7e7;
+$silver:                  #cccccc;
+$stone:                   #ADADAD;
+$dusty-gray:              #999;
+$dove-gray:               #666;
+$coal-gray:               #333;
+$sky:                     #B3DAEB;
+$blue-green:              #1f4e66;
+$orange:                  #E16427;
+$green:                   #49A662;
+
+
+
+// font color
+$base-font-color:           $grey;
+$base-font-color--light:    $dove-gray;
+$base-font-color--dark:     $dusty-gray;
+$base-font-color--darker:   $coal-gray;
+$base-font-color--blue:     $blue-green;
+$base-link-color:           $grey;
+$base-font-color--disabled: $silver;
+
+// border color
+$base-border-color:       $silver;
+$base-border-color--dark: $dusty-gray;
+$base-border-color--blue: $sky;
+
+// Input color
+$base-input-color--disabled:  lighten($black, 96%);
+
+// highlights
+$base-highlight-color:    $silver-light;
+
+// Separators
+$base-separator-color--light: $silver;
+$base-separator-color--dark: $dusty-gray;
