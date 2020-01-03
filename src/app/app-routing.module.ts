@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/services';
 import { NotFoundPageComponent } from './core/containers';
+import { HomePageComponent } from './core/containers/home-page.component';
+
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/projects', pathMatch: 'full' },
+  { path: '', component: HomePageComponent, canActivate: [AuthGuard] },
   {
     path: 'projects',
     loadChildren: () => import('@bb-app/projects/projects.module').then(m => m.ProjectsModule),

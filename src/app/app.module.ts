@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthModule } from './auth';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
-import { ROOT_REDUCERS, metaReducers} from './reducers';
+import { ROOT_REDUCERS, metaReducers } from './reducers';
 import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
 
 import { EffectsModule } from '@ngrx/effects';
@@ -14,6 +14,10 @@ import { UserEffects, RouterEffects } from './core/effects';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './core/containers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { fakeBackendProvider } from './helpers/fake-backend.interceptor';
+
 
 // import { BrowserModule } from '@angular/platform-browser';
 // import { NgModule } from '@angular/core';
@@ -26,7 +30,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 // @NgModule({
-//   declarations: [],
+//
 //   imports: [
 //     BrowserModule,
 //     CoreModule,
@@ -40,6 +44,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
+
   imports: [
     CommonModule,
     BrowserModule,
@@ -99,6 +104,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     EffectsModule.forRoot([UserEffects, RouterEffects]),
     CoreModule,
   ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

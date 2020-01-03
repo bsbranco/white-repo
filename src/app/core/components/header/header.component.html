@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav">
+    <ng-container *ngTemplateOutlet="(loggedIn$|async)? loggedIn:loggedOut ; context: {data:loggedInUser$|async}">
+    </ng-container>
+  </div>
+</nav>
+
+<ng-template #loggedIn let-user='data'>
+
+  <a class="nav-item nav-link" routerLink="/">Home</a>
+  <a class="nav-item nav-link" (click)="logout($event)">Logout</a>
+  <a class="nav-item nav-link">Welcome {{user.firstName}}&nbsp;{{user.lastName}}</a>
+</ng-template>
+
+<ng-template #loggedOut>
+  <h3>WHITE REPO</h3>
+</ng-template>

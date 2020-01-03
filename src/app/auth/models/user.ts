@@ -6,6 +6,8 @@ export interface Credentials {
 export interface User {
   id?: number;
   uuid?: string;
-  name: string;
-
+  firstName: string;
+  lastName: string;
+  email?: string; // credentials
+  token?: string;
 }

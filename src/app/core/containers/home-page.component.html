@@ -1,0 +1,11 @@
+<div class="card mt-4">
+    <h4 class="card-header">You're logged in !!</h4>
+    <div class="card-body">
+    <ng-container *ngIf="loggedInUser$|async as user">
+        <h6>User logged in:</h6>
+         <p>{{user.id}}</p>
+         <p>{{user.uuid}}</p>
+         <p>{{user.firstName}}&nbsp;{{user.lastName}}</p>
+    </ng-container>
+    </div>
+</div>
