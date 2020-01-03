@@ -1,0 +1,15 @@
+<div class="rate-box" [ngClass]="{'loading':loading,'noData':!loading && !rate}">
+
+    <label class="main-label">{{label}}</label>
+
+    <div class="rate-level">
+        <div *ngFor="let n of range; let $i = index;" class="rate" (click)="mark($i)" >
+             <div class="rate-item" [ngClass]="setClass($i)">{{$i}}</div>
+        </div>
+    </div>
+    <div class="label-row">
+         <div *ngFor="let caption of captions" class="label-box">
+            <label class="secondary-label">{{caption}}</label>
+        </div>
+    </div>
+</div>

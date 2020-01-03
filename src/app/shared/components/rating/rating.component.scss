@@ -1,0 +1,142 @@
+// // VARIABLES
+// ///////////////////////////////////////////////////////
+// @import '../../../../assets/scss/variables/layout';
+// @import '../../../../assets/scss/variables/colors';
+// @import '../../../../assets/scss/variables/fonts';
+
+
+// $rate-margin-sm:  2px;
+// $rate-margin-md:  5px;
+
+// .rate-box {
+
+// 	.main-label {
+// 		margin-bottom: 8px;
+// 	}
+
+// 	.rate-level {
+// 		display: flex;
+// 		justify-content: flex-start;
+
+// 		// compensate paddings of 1st and last element
+// 		margin-left: -$rate-margin-sm;
+// 		margin-right: -$rate-margin-sm;
+// 		@media (min-width: $bp-tablet) {
+// 			margin-left: -$rate-margin-md;
+// 			margin-right: -$rate-margin-md;
+// 		}
+
+// 		.rate {
+// 			flex: 0 0 9.090909090909091%;
+// 			display: flex;
+// 			justify-content: center;
+// 			align-items: stretch;
+// 			box-sizing: border-box;
+// 			padding:0 $rate-margin-sm;
+
+// 			@media (min-width: $bp-tablet) {
+// 				padding: 0 $rate-margin-md;
+// 			}
+
+// 			&:before {
+// 				content: "";
+// 				display: table;
+// 				padding-top: 100%;
+// 			}
+
+// 			.rate-item {
+// 				flex-grow: 1;
+// 				display: flex;
+// 				justify-content: center;
+// 				align-items: center;
+// 				border-radius: $border-radius;
+// 				overflow:hidden;
+// 				background-color: $default-bg-color;
+
+// 				&.negative {
+// 					background-color: $negative-level-color;
+// 					color: $white;
+// 				}
+// 				&.neutral {
+// 					background-color: $neutral-level-color;
+// 				}
+// 				&.positive {
+// 					background-color: $positive-level-color;
+// 					color: $white;
+// 				}
+// 			}
+// 		}
+// 	}
+
+// 	.label-row {
+// 		display: flex;
+
+// 		.label-box {
+// 			flex-grow: 1;
+// 			position: relative;
+
+// 			.secondary-label {
+// 				display: inline-block;
+// 			}
+
+// 			&:nth-child(1) {
+// 				text-align: left;
+// 			}
+// 			&:nth-child(2) {
+// 				text-align: center;
+// 			}
+// 			&:nth-child(3) {
+// 				text-align: right;
+// 			}
+// 		}
+// 	}
+
+// 	&.loading {
+
+// 		.rate-level {
+// 			justify-content: space-evenly;
+// 			margin-left: 0;
+// 			margin-right: 0;
+
+// 			.rate {
+// 				flex: none;
+// 				background: white;
+// 				width: 5px;
+// 				padding: 0 1%;
+// 				height:20px;
+
+// 				@media (min-width: 400px) {
+// 					height: 30px;
+// 				}
+// 				@media (min-width: 500px) {
+// 					height: 40px;
+// 				}
+// 				@media (min-width: 600px) {
+// 					height: 50px;
+// 				}
+// 				@media (min-width: 670px) {
+// 					height:55px;
+// 				}
+
+// 				&:last-child {
+// 					display: none;
+// 				}
+
+// 				.rate-item {
+// 					display: none;
+// 				}
+// 			}
+// 		}
+
+// 		.label-row {
+// 			padding-top: 3px;
+// 		}
+// 	}
+
+// 	&.noData {
+// 		.rate-item,
+// 		.secondary-label {
+// 			color: $no-data-bg-color;
+// 		}
+// 	}
+// }
