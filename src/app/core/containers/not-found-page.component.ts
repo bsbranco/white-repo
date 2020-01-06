@@ -18,3 +18,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   ],
 })
 export class NotFoundPageComponent { }
+
+
+// https://medium.com/angular-in-depth/angular-smart-404-page-85a45b109fd8

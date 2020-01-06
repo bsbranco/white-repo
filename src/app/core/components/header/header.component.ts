@@ -15,7 +15,7 @@ import { AuthActions } from '@bb-app/auth/actions';
 export class HeaderComponent implements OnDestroy {
 
   private unsubscribe$ = new Subject<void>();
-  readonly loggedInUser$ = this.store.pipe(select(selectUser), filter(user => user !== null));
+  // readonly loggedInUser$ = this.store.pipe(select(selectUser), filter(user => user !== null));
   readonly loggedIn$ = this.store.pipe(select(selectLoggedIn));
   constructor(private store: Store<fromAuth.State>) { }
 

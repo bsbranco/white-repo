@@ -17,30 +17,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { fakeBackendProvider } from './helpers/fake-backend.interceptor';
+import { CookieService } from 'ngx-cookie-service';
 
-
-// import { BrowserModule } from '@angular/platform-browser';
-// import { NgModule } from '@angular/core';
-
-// import { AppRoutingModule } from './app-routing.module';
-// import { AppComponent } from './core/containers';
-// import { EffectsModule } from '@ngrx/effects';
-// import { UserEffects, RouterEffects } from './core/effects';
-// import { CoreModule } from './core/core.module';
-
-
-// @NgModule({
-//
-//   imports: [
-//     BrowserModule,
-//     CoreModule,
-//     AppRoutingModule,
-//     EffectsModule.forRoot([UserEffects, RouterEffects]),
-//   ],
-//   providers: [],
-//     bootstrap: [AppComponent]
-// })
-// export class AppModule { }
 
 
 @NgModule({
@@ -105,6 +83,7 @@ import { fakeBackendProvider } from './helpers/fake-backend.interceptor';
     CoreModule,
   ],
   providers: [
+    CookieService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 

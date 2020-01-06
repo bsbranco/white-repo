@@ -12,9 +12,10 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { LoginFormComponent, LogoutConfirmationDialogComponent } from './components';
 import { AuthEffects } from './effects';
-import { LoginPageComponent } from './containers';
+import { SignUpPageComponent, LoginPageComponent } from './containers';
 
 export const COMPONENTS = [
+  SignUpPageComponent,
   LoginPageComponent,
   LoginFormComponent,
   LogoutConfirmationDialogComponent,

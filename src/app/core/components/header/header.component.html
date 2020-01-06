@@ -1,17 +1,21 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-  <div class="navbar-nav">
-    <ng-container *ngTemplateOutlet="(loggedIn$|async)? loggedIn:loggedOut ; context: {data:loggedInUser$|async}">
-    </ng-container>
+  <a href="#" class="navbar-brand">
+   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 6v16h-20v-16h20zm2-6h-24v24h24v-24zm-11 11v1.649l3.229 1.351-3.229 1.347v1.653l5-2.201v-1.599l-5-2.2zm-7 2.201v1.599l5 2.2v-1.653l-3.229-1.347 3.229-1.351v-1.649l-5 2.201z"/></svg>
+  white-repo
+  </a>
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div *ngIf="(loggedIn$|async)" class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav">
+      <a href="#" class="nav-item nav-link active">Home</a>
+      <!-- <a href="#" class="nav-item nav-link">Projects</a>
+            <a href="#" class="nav-item nav-link">Users</a>
+            <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a> -->
+    </div>
+    <div class="navbar-nav ml-auto">
+      <a class="nav-item nav-link" (click)="logout($event)">Logout</a>
+    </div>
   </div>
 </nav>
-
-<ng-template #loggedIn let-user='data'>
-
-  <a class="nav-item nav-link" routerLink="/">Home</a>
-  <a class="nav-item nav-link" (click)="logout($event)">Logout</a>
-  <a class="nav-item nav-link">Welcome {{user.firstName}}&nbsp;{{user.lastName}}</a>
-</ng-template>
-
-<ng-template #loggedOut>
-  <h3>WHITE REPO</h3>
-</ng-template>

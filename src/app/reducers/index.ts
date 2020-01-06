@@ -6,6 +6,7 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import * as fromRouter from '@ngrx/router-store';
+import * as fromHttp from '../core/reducers';
 
 /**
  * Every reducer module's default export is the reducer function itself. In
@@ -23,6 +24,7 @@ import { InjectionToken } from '@angular/core';
  */
 export interface State {
   router: fromRouter.RouterReducerState<any>;
+  [fromHttp.httpFeatureKey]: fromHttp.State;
 }
 
 
@@ -36,11 +38,12 @@ export const ROOT_REDUCERS = new InjectionToken<
 >('Root reducers token', {
   factory: () => ({
     router: fromRouter.routerReducer,
+    http: fromHttp.httpReducer,
   }),
 });
 
 // console.log all actions
-export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
+export function debugReducer(reducer: ActionReducer<State>): ActionReducer<State> {
   return (state, action) => {
     const result = reducer(state, action);
     console.groupCollapsed(action.type);
@@ -59,9 +62,5 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
  * that will be composed to form the root meta-reducer.
  */
 export const metaReducers: MetaReducer<State>[] = !environment.production
-  ? [logger]
+  ? [debugReducer]
   : [];
-
-
-
-
