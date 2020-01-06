@@ -21,3 +21,4 @@ export class NotFoundPageComponent { }
 
 
 // https://medium.com/angular-in-depth/angular-smart-404-page-85a45b109fd8
+// ng build --prod --output-path docs --base-href /white-repo/
